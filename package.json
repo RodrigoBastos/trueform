@@ -1,0 +1,24 @@
+{
+  "name": "trueform",
+  "version": "0.0.1",
+  "description": "Set directives for validations form with AngularJS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RodrigoBastos/trueform.git"
+  },
+  "keywords": [
+    "form",
+    "validation",
+    "trueform",
+    "angular"
+  ],
+  "author": "Rodrigo Bastos",
+  "license": "None",
+  "bugs": {
+    "url": "https://github.com/RodrigoBastos/trueform/issues"
+  }
+}
