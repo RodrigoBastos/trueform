@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular.js"></script>
+  <script src="../dist/trueform.js"></script>
+  <script src="../dist/control-trueform.js"></script>
+</head>
+<body ng-app="application" ng-controller="FormCtrl">
+  <form>
+    Birthdate:<br>
+    <input type="text" name="birthdate" ng-model="birthdate" tf-date format-view="dd/MM/yyyy">
+    <br>
+  </form>
+</body>
+</html>
