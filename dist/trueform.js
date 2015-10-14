@@ -86,8 +86,6 @@ trueForm.directive('tfDate', function($filter){
 
         };
 
-
-
         //Parse
         ngModel.$parsers.push(function(viewValue) {
 
@@ -101,9 +99,8 @@ trueForm.directive('tfDate', function($filter){
 
           var p = (viewValue + twoDelimter).split(delimter); // DD/MM/YYYY
 
-          console.log('format', formatCurrent);
           //Is date Valid?
-          if (!isDateValid(viewValue, formatCurrent) && viewValue) ngModel.$setValidity('dateNumberFormat', false);
+          if (!isDateValid(viewValue, formatCurrent) && viewValue) ngModel.$setValidity('tfDate', false);
           else ngModel.$setValidity('tfDate', true);
 
 
