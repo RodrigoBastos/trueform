@@ -45,7 +45,7 @@ trueForm.directive('tfDate', function($filter){
         //Rules
         var isDateValid = function (value, format) {
 
-          var maxDate = attrs.maxDate == 'true' ? true : false;
+          var maxDate = attrs.maxDate == 'true';
 
           var date = value;
           var year = new Date().getFullYear();
