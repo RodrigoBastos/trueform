@@ -9,10 +9,14 @@
   <script src="../dist/control-trueform.js"></script>
 </head>
 <body ng-app="application" ng-controller="FormCtrl">
-  <form>
+  <form name="profileForm">
     Birthdate:<br>
-    <input type="text" name="birthdate" ng-model="birthdate" tf-date format-view="dd/MM/yyyy">
+    <input type="text" name="birthdate" ng-model="birthdate" tf-date format-view="dd-MM-yyyy">
     <br>
   </form>
+
+  <div>
+    <h3>{{profileForm.$valid}}</h3>
+  </div>
 </body>
 </html>

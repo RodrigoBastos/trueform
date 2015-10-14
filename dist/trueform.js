@@ -13,24 +13,29 @@ trueForm.directive('tfDate', function($filter){
       var formats  = {
         'dd/MM/yyyy': {
           'view': 'dd/MM/yyyy',
-          'delimiter': '/'
+          'delimiter': '/',
+          'regexp': '(0[1-9]|[12][0-9]|3[01])[/.](0[1-9]|1[0-2])[/.]((19|20)[0-9][0-9])'
         },
         'dd-MM-yyyy': {
           'view': 'dd-MM-yyyy',
-          'delimiter': '-'
+          'delimiter': '-',
+          'regexp': '(0[1-9]|[12][0-9]|3[01])[-.](0[1-9]|1[0-2])[-.]((19|20)[0-9][0-9])'
         },
         'MM/dd/yyyy': {
           'view': 'MM/dd/yyyy',
-          'delimiter': '/'
+          'delimiter': '/',
+          'regexp': '(0[1-9]|1[0-2])[/.](0[1-9]|[12][0-9]|3[01])[/.]((19|20)[0-9][0-9])'
         },
         'MM-dd-yyyy': {
           'view': 'MM-dd-yyyy',
-          'delimiter': '-'
+          'delimiter': '-',
+          'regexp': '(0[1-9]|1[0-2])[-.](0[1-9]|[12][0-9]|3[01])[-.]((19|20)[0-9][0-9])'
         }
       };
 
       var getObjectFormatView = function (formatView){
-        return formats[formatView] || null;
+        //Default the format is 'dd/MM/yyyy'
+        return formats[formatView] || formats['dd/MM/yyyy'];
       };
 
       if(ngModel){
@@ -38,7 +43,7 @@ trueForm.directive('tfDate', function($filter){
         console.log('formatView', attrs.formatView);
 
         //Rules
-        var isDateValid = function (value) {
+        var isDateValid = function (value, format) {
 
           var date = value;
           var year = new Date().getFullYear();
@@ -46,9 +51,8 @@ trueForm.directive('tfDate', function($filter){
           var day  = new Date().getDate();
 
           var error = false;
-          var dateRegExp = new RegExp("(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[0-2])[- /.](19|20)");
-
-          var arrayDate = date.split("/");
+          var dateRegExp = new RegExp(format.regexp);
+          var arrayDate = date.split(format.delimiter);
 
           //RegExp
           if (date.search(dateRegExp) == -1) error = true;
@@ -97,10 +101,11 @@ trueForm.directive('tfDate', function($filter){
 
           var p = (viewValue + twoDelimter).split(delimter); // DD/MM/YYYY
 
+          console.log('format', formatCurrent);
           //Is date Valid?
-          if (!isDateValid(viewValue) && viewValue) ngModel.$setValidity('dateNumberFormat', false);
+          if (!isDateValid(viewValue, formatCurrent) && viewValue) ngModel.$setValidity('dateNumberFormat', false);
+          else ngModel.$setValidity('tfDate', true);
 
-          else ngModel.$setValidity('dateNumberFormat', true);
 
           return p[2] + p[1] + p[0];
         });
@@ -108,10 +113,11 @@ trueForm.directive('tfDate', function($filter){
         //Date Format dd/MM/yyyy
         ngModel.$render = function () {
 
+          var formatCurrent = getObjectFormatView(attrs.formatView);
           var p = ngModel.$viewValue + '00000000';
           var value = p[0] + p[1] + p[2] + p[3] + ' ' + p[4] + p[5] + ' ' + p[6] + p[7];
 
-          element.val($filter('date')(new Date(value), 'dd/MM/yyyy'));
+          element.val($filter('date')(new Date(value), formatCurrent.view));
 
         };
       }
