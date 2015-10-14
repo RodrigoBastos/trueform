@@ -45,6 +45,8 @@ trueForm.directive('tfDate', function($filter){
         //Rules
         var isDateValid = function (value, format) {
 
+          var maxDate = attrs.maxDate == 'true' ? true : false;
+
           var date = value;
           var year = new Date().getFullYear();
           var month = new Date().getMonth() + 1; //Jan equals 0
@@ -58,7 +60,7 @@ trueForm.directive('tfDate', function($filter){
           if (date.search(dateRegExp) == -1) error = true;
 
           //Current Date
-          else if (arrayDate[2] > year || (arrayDate[2] == year && arrayDate[1] > month) || (arrayDate[2] == year && arrayDate[1] == month && arrayDate[0] > day))
+          else if (maxDate && (arrayDate[2] > year || (arrayDate[2] == year && arrayDate[1] > month) || (arrayDate[2] == year && arrayDate[1] == month && arrayDate[0] > day)))
             error = true;
 
           //Months with thirty days

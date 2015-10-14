@@ -11,12 +11,12 @@
 <body ng-app="application" ng-controller="FormCtrl">
   <form name="profileForm">
     Birthdate:<br>
-    <input type="text" name="birthdate" ng-model="birthdate" tf-date format-view="dd-MM-yyyy">
+    <input type="text" name="birthdate" ng-model="birthdate" tf-date format-view="dd/MM/yyyy" max-date="true">
     <br>
   </form>
 
   <div>
-    <h3>{{tfDate.$valid}}</h3>
+    <h3>{{profileForm.$valid}}</h3>
   </div>
 </body>
 </html>
