@@ -40,12 +40,12 @@ trueForm.directive('tfDate', function($filter){
 
       if(ngModel){
 
-        console.log('formatView', attrs.formatView);
+        console.log('formatView', attrs.tfDateView);
 
         //Rules
         var isDateValid = function (value, format) {
 
-          var maxDate = attrs.maxDate == 'true';
+          var maxDate = attrs.tfDateLimit == 'true';
 
           var date = value;
           var year = new Date().getFullYear();
@@ -91,7 +91,7 @@ trueForm.directive('tfDate', function($filter){
         //Parse
         ngModel.$parsers.push(function(viewValue) {
 
-          var formatCurrent = getObjectFormatView(attrs.formatView);
+          var formatCurrent = getObjectFormatView(attrs.tfDateView);
           //Format Input (Append '/')
           if (viewValue.length == 3) editValue(viewValue, 2, formatCurrent);
           if (viewValue.length == 6) editValue(viewValue, 5, formatCurrent);
@@ -112,8 +112,9 @@ trueForm.directive('tfDate', function($filter){
         //Date Format dd/MM/yyyy
         ngModel.$render = function () {
 
-          var formatCurrent = getObjectFormatView(attrs.formatView);
+          var formatCurrent = getObjectFormatView(attrs.tfDateView);
           var p = ngModel.$viewValue + '00000000';
+
           var value = p[0] + p[1] + p[2] + p[3] + ' ' + p[4] + p[5] + ' ' + p[6] + p[7];
 
           element.val($filter('date')(new Date(value), formatCurrent.view));
