@@ -93,6 +93,7 @@ trueForm.directive('tfDate', function($filter){
 
           var formatCurrent = getObjectFormatView(attrs.tfDateView);
           //Format Input (Append '/')
+          //ToDo - melhorar format-view var count = (date.match(/\//g) || []).length;
           if (viewValue.length == 3) editValue(viewValue, 2, formatCurrent);
           if (viewValue.length == 6) editValue(viewValue, 5, formatCurrent);
 
