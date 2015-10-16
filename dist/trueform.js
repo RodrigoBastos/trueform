@@ -51,6 +51,30 @@ trueForm.directive('tfDate', function($filter, $browser){
 
       };
 
+      var pushNumber = function () {
+
+        var format = getObjectFormatView(attrs.tfDateView);
+        var value = element.val();
+        //var newValue = ngModel.$render(value);
+        var array = value.split(format.delimiter);
+        console.log('array', array);
+        var numbers = array.join("");
+        console.log('numbers', numbers );
+
+        var newValue = value;
+
+        if(array[0].length > 2 || array[1].length > 2){
+          newValue = '';
+          for(var i = 0; i < numbers.length; i++){
+            if (i == 2 || i == 4){
+              newValue = newValue + format.delimiter;
+            }
+            newValue = newValue + numbers[i];
+          }
+        }
+        element.val(newValue);
+      };
+
       //Get Format View
       var getObjectFormatView = function (formatView){
         //Default the format is 'dd/MM/yyyy'
@@ -145,8 +169,12 @@ trueForm.directive('tfDate', function($filter, $browser){
           console.log('event', event);
           var key = event.keyCode;
 
-          if ((key >= 8 && key <= 57) || (key >= 96 && key <= 105)) return;
+          if ((key >= 8 && key <= 57) || (key >= 96 && key <= 105)) {
 
+            $browser.defer(pushNumber);
+
+            return;
+          }
 
           $browser.defer(listener);
 
