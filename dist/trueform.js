@@ -55,23 +55,21 @@ trueForm.directive('tfDate', function($filter, $browser){
 
         var format = getObjectFormatView(attrs.tfDateView);
         var value = element.val();
-        //var newValue = ngModel.$render(value);
         var array = value.split(format.delimiter);
-        console.log('array', array);
         var numbers = array.join("");
-        console.log('numbers', numbers );
-
         var newValue = value;
 
         if(array[0].length > 2 || array[1].length > 2){
+
           newValue = '';
+
           for(var i = 0; i < numbers.length; i++){
-            if (i == 2 || i == 4){
-              newValue = newValue + format.delimiter;
-            }
+            if (i == 2 || i == 4) newValue = newValue + format.delimiter;
             newValue = newValue + numbers[i];
           }
+
         }
+        //Update View Value Input
         element.val(newValue);
       };
 
@@ -141,8 +139,6 @@ trueForm.directive('tfDate', function($filter, $browser){
 
           var delimter = formatCurrent.delimiter;
           var twoDelimter = delimter+delimter;
-
-          console.log('view value', viewValue);
 
           //Default Type DATE
           var response = viewValue;
