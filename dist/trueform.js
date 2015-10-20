@@ -125,6 +125,8 @@ trueForm.directive('tfDate', function($filter, $browser){
 
         element.val(newValue);
 
+        return newValue;
+
       };
 
       if(ngModel){
@@ -134,12 +136,16 @@ trueForm.directive('tfDate', function($filter, $browser){
 
           var formatCurrent = getObjectFormatView(attrs.tfDateView);
           //Format Input (Append '/')
-          //ToDo - melhorar format-view var count = (date.match(/\//g) || []).length;
-          if (viewValue.length == 3) editValue(viewValue, 2, formatCurrent);
-          if (viewValue.length == 6) editValue(viewValue, 5, formatCurrent);
+          if (viewValue.length == 3) viewValue = editValue(viewValue, 2, formatCurrent);
+          if (viewValue.length == 6) viewValue = editValue(viewValue, 5, formatCurrent);
 
           var delimter = formatCurrent.delimiter;
           var twoDelimter = delimter+delimter;
+
+          console.log('view value', viewValue);
+
+          //Default Type DATE
+          var response = viewValue;
 
           var p = (viewValue + twoDelimter).split(delimter); // DD/MM/YYYY
 
@@ -147,8 +153,10 @@ trueForm.directive('tfDate', function($filter, $browser){
           if (!isDateValid(viewValue, formatCurrent) && viewValue) ngModel.$setValidity('tfDate', false);
           else ngModel.$setValidity('tfDate', true);
 
+          if (attrs.tfDateType == 'Number') response = Number(p[2] + p[1] + p[0]);
+          else if (attrs.tfDateType = 'String') response = p[2] + p[1] + p[0];
 
-          return p[2] + p[1] + p[0];
+          return response;
         });
 
         //Date Format dd/MM/yyyy
@@ -172,7 +180,6 @@ trueForm.directive('tfDate', function($filter, $browser){
           if ((key >= 8 && key <= 57) || (key >= 96 && key <= 105)) {
 
             $browser.defer(pushNumber);
-
             return;
           }
 
