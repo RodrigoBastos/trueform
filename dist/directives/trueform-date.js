@@ -1,7 +1,7 @@
 /**
- * Created by rodrigo on 13/10/15.
+ * Created by rodrigo on 05/11/15.
  */
-var trueForm = angular.module("TrueForm", []);
+
 
 var formats  = {
   'dd/MM/yyyy': {
@@ -26,7 +26,7 @@ var formats  = {
   }
 };
 
-trueForm.directive('tfDate', function($filter, $browser){
+angular.module("TrueForm.date",[]).directive('tfDate', function($filter, $browser){
 
   return {
     restrict: 'A',
@@ -34,8 +34,8 @@ trueForm.directive('tfDate', function($filter, $browser){
     link: function(scope, element, attrs, ngModel) {
 
       /*
-      * FUNCTIONS
-      */
+       * FUNCTIONS
+       */
 
       //Event
       var listener = function () {
