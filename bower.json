@@ -20,6 +20,9 @@
     "bower_components",
     "test",
     "tests",
-    "source"
+    "source",
+    "gulpfile.js",
+    "package.json",
+    ".gitignore"
   ]
 }
