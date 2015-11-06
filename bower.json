@@ -5,8 +5,8 @@
   "authors": [
     "Rodrigo Bastos <rodrigorozendobastos@gmail.com>"
   ],
-  "description": "Set directives for validation form with AngularJS",
-  "main": "/dist/trueform.js",
+  "description": "Set directives for form validation with AngularJS",
+  "main": "/dist/trueform.min.js",
   "keywords": [
     "Form",
     "Validation",
