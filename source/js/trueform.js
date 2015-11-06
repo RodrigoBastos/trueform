@@ -1,7 +1,10 @@
-/**
- * Created by rodrigo on 13/10/15.
- */
-
-//= include partials/app.js
+//Date
 //= include ../../dist/directives/trueform-date.js
 
+(function(){
+
+  angular.module("TrueForm", [
+    'TrueForm.date'
+  ]);
+
+})();
