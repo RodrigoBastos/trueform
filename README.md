@@ -1,7 +1,7 @@
 # trueform
-Set directives for form validation with AngularJS
+Diretiva Angular para validação de formulário
 
-## Installation
+## Instalação Bower
 
 ```sh
 $ bower install trueform --save-dev
