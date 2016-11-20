@@ -1,7 +1,7 @@
 {
   "name": "trueform",
-  "version": "0.0.1",
-  "description": "Set directives for validations form with AngularJS",
+  "version": "1.0.0",
+  "description": "Diretiva AngularJS para validação de formulário",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

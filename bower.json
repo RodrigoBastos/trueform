@@ -1,11 +1,11 @@
 {
   "name": "trueform",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "homepage": "https://github.com/RodrigoBastos/trueform",
   "authors": [
     "Rodrigo Bastos <rodrigorozendobastos@gmail.com>"
   ],
-  "description": "Set directives for form validation with AngularJS",
+  "description": "Diretiva AngularJS para validação de formulário",
   "main": "/dist/trueform.min.js",
   "keywords": [
     "Form",
