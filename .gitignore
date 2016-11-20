@@ -7,4 +7,7 @@ out
 gen
 
 #Bower Components
-bower_components
+bower_components/
+
+#Node Modules
+node_modules/
