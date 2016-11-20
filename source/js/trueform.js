@@ -6,8 +6,9 @@
   angular.module("TrueForm", [
 
     //Date
-    'TrueForm.date',
-    'TrueForm.email'
+    "TrueForm.date",
+    //Mail
+    "TrueForm.email"
 
   ]);
 

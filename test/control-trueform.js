@@ -1,9 +1,5 @@
-/**
- * Created by handtalk on 13/10/15.
- */
-
-var app = angular.module('application', ['TrueForm']);
-
-app.controller('FormCtrl', function ($scope){
+angular.module("application", ["TrueForm"])
+  .controller("FormCtrl", function ($scope){
+    // Data de aniversário de teste
     $scope.birthdate = 19901107;
-});
+  });
