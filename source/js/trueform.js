@@ -2,14 +2,10 @@
 //= include ../../dist/directives/trueform-email.js
 
 (function(){
-
-  angular.module("TrueForm", [
-
+  angular.module('TrueForm', [
     //Date
-    "TrueForm.date",
+    'TrueForm.date',
     //Mail
-    "TrueForm.email"
-
+    'TrueForm.email'
   ]);
-
 })();
