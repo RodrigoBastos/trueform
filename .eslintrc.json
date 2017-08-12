@@ -1,7 +1,6 @@
 {
   "env": {
     "browser": true,
-    "es6": true,
     "node": true
   },
   "globals": {
@@ -23,6 +22,12 @@
     "semi": [
         "error",
         "always"
-    ]
+    ],
+    "indent": [2, "tab"],
+    "comma-dangle": ["error", "never"],
+    "prefer-arrow-callback": ["error", { "allowNamedFunctions": true }],
+    "no-tabs": "off",
+    "object-shorthand": ["error", "never"],
+    "no-var": "off"
   }
 }
