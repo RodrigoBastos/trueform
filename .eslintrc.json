@@ -25,9 +25,12 @@
     ],
     "indent": [2, "tab"],
     "comma-dangle": ["error", "never"],
-    "prefer-arrow-callback": ["error", { "allowNamedFunctions": true }],
+    "prefer-arrow-callback": "off",
     "no-tabs": "off",
     "object-shorthand": ["error", "never"],
-    "no-var": "off"
+    "no-var": "off",
+    "prefer-template": "off",
+    "no-param-reassign": "off",
+    "func-names": "off"
   }
 }
